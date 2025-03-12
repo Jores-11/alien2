@@ -1,6 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 
+
 class Alien(Sprite):
     """A class to represent a single alien in the fleet."""
 
@@ -12,7 +13,7 @@ class Alien(Sprite):
 
         # Load the alien image and set its rect attribute
         try:
-            self.image = pygame.image.load('images/alien.bmp')
+            self.image = pygame.image.load(os.path(os.path()))
         except pygame.error as e:
             print(f"Error loading alien image: {e}")
             self.image = pygame.Surface((30, 30))  # Fallback: green square
@@ -29,12 +30,12 @@ class Alien(Sprite):
 
     def update(self):
         """Move the alien left or right."""
-        self.x += (self.settings.alien_speed * self.settings.fleet_direction)
+        self.x += (self.settings.alien_speed)
         self.rect.x = int(self.x)  # Convert float to int for pixel precision
 
     def check_edges(self):
         """Return True if alien is at edge of screen."""
         screen_rect = self.screen.get_rect()
-        if self.rect.right >= screen_rect.right or self.rect.left <= 0:
+        if self.rect.right >= screen_rect.right:
             return True
         return False
